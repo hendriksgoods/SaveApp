@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Dashboard – GalangDana')
+@section('title', 'Dashboard – SaveThem')
 
 @section('content')
 <div class="bg-primary text-white py-4">

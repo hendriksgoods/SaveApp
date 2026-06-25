@@ -27,9 +27,6 @@ return new class extends Migration
             $table->unsignedInteger('duration_days');
             $table->date('deadline');
             $table->string('image')->nullable();
-   //         $table->string('bank_name');
-  //          $table->string('account_number', 20);
-  //          $table->string('account_name');
             $table->enum('status', ['pending', 'active', 'completed', 'rejected'])->default('pending');
             $table->boolean('is_urgent')->default(false);
             $table->timestamps();

@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration {
     public function up(): void {
-        Schema::create('campaign_updates', function (Blueprint $table) {
+        Schema::create('jejak_kebaikans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('campaign_id')->constrained()->onDelete('cascade');
             $table->string('title');
@@ -14,5 +14,5 @@ return new class extends Migration {
             $table->timestamps();
         });
     }
-    public function down(): void { Schema::dropIfExists('campaign_updates'); }
+    public function down(): void { Schema::dropIfExists('jejak_kebaikans'); }
 };

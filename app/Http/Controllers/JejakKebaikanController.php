@@ -2,11 +2,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Campaign;
-use App\Models\CampaignUpdate;
+use App\Models\JejakKebaikan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class CampaignUpdateController extends Controller
+class JejakKebaikanController extends Controller
 {
     // Penggalang tambah Jejak Kebaikan
     public function store(Request $request, Campaign $campaign)
@@ -29,7 +29,7 @@ class CampaignUpdateController extends Controller
                 ->store('updates/'.$campaign->id, 'public');
         }
 
-        CampaignUpdate::create([
+        JejakKebaikan::create([
             'campaign_id' => $campaign->id,
             'title'       => $request->title,
             'description' => $request->description,
@@ -43,11 +43,11 @@ class CampaignUpdateController extends Controller
         ])->with('success', 'Jejak Kebaikan berhasil ditambahkan.');
     }
 
-    public function destroy(Campaign $campaign, CampaignUpdate $update)
+    public function destroy(Campaign $campaign, JejakKebaikan $jejak)
     {
         abort_if($campaign->user_id !== auth()->id(), 403);
-        if ($update->image_path) Storage::disk('public')->delete($update->image_path);
-        $update->delete();
+        if ($jejak->image_path) Storage::disk('public')->delete($jejak->image_path);
+        $jejak->delete();
         return back()->with('success','Update berhasil dihapus.');
     }
 }

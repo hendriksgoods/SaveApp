@@ -31,9 +31,6 @@ class WithdrawalController extends Controller
             'account_number' => ['required', 'string','regex:/^[0-9]{8,16}$/'],
             'account_name' => ['required','regex:/^[a-zA-Z\s]+$/'],
             'description'    => ['required', 'string','min:10','max:500'],
-            // 'account_name'   => ['required', 'string'],
-            // 'account_number' => ['required','min: 8','digits:16'],
-            
         ], [
             'amount.min'         => 'Penarikan minimal Rp 10.000.',
             'amount.max'         => 'Jumlah melebihi saldo tersedia (Rp ' . number_format($available, 0, ',', '.') . ').',

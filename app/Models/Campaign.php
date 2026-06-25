@@ -3,7 +3,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use App\Models\CampaignUpdate;
+use App\Models\JejakKebaikan;
 use Illuminate\Support\Str;
 class Campaign extends Model
 {
@@ -32,7 +32,7 @@ class Campaign extends Model
     public function galleries()     { return $this->hasMany(CampaignGallery::class); }
     public function fundUsages()    { return $this->hasMany(FundUsage::class); }
     public function comments()      { return $this->hasMany(ForumComment::class); }
-    public function updates()       { return $this->hasMany(CampaignUpdate::class)->latest(); }
+    public function updates()       { return $this->hasMany(JejakKebaikan::class)->latest(); }
     public function withdrawals() { return $this->hasMany(Withdrawal::class)->latest(); }
     public function getPercentageAttribute(): int
     {

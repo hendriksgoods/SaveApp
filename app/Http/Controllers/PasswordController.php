@@ -104,33 +104,33 @@ class PasswordController extends Controller
         return redirect()->route('login')
             ->with('success', 'Password berhasil direset. Silakan login dengan password baru.');
     }
-
+}
     // Halaman ganti password (untuk user yang sudah login)
-    public function showChange()
-    {
-        return view('auth.change-password');
-    }
+    // public function showChange()
+    // {
+    //     return view('auth.change-password');
+    // }
 
     // Proses ganti password
-    public function change(Request $request)
-    {
-        $request->validate([
-            'current_password' => ['required'],
-            'password'         => ['required', 'min:8', 'confirmed'],
-        ],[
-            'password.min'       => 'Password baru minimal 8 karakter.',
-            'password.confirmed' => 'Konfirmasi password tidak cocok.',
-        ]);
+//     public function change(Request $request)
+//     {
+//         $request->validate([
+//             'current_password' => ['required'],
+//             'password'         => ['required', 'min:8', 'confirmed'],
+//         ],[
+//             'password.min'       => 'Password baru minimal 8 karakter.',
+//             'password.confirmed' => 'Konfirmasi password tidak cocok.',
+//         ]);
 
-        // Cek password lama
-        if (!Hash::check($request->current_password, auth()->user()->password)) {
-            return back()->withErrors(['current_password' => 'Password saat ini tidak benar.']);
-        }
+//         // Cek password lama
+//         if (!Hash::check($request->current_password, auth()->user()->password)) {
+//             return back()->withErrors(['current_password' => 'Password saat ini tidak benar.']);
+//         }
 
-        auth()->user()->update([
-            'password' => Hash::make($request->password),
-        ]);
+//         auth()->user()->update([
+//             'password' => Hash::make($request->password),
+//         ]);
 
-        return back()->with('success', 'Password berhasil diubah.');
-    }
-}
+//         return back()->with('success', 'Password berhasil diubah.');
+//     }
+// }

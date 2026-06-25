@@ -8,7 +8,7 @@ class Withdrawal extends Model
     protected $fillable = [
         'campaign_id','user_id','amount',
         'bank_name','account_number','account_name',
-        'description','status','rejection_note','processed_at',
+        'description','status','processed_at',
     ];
 
     protected $casts = [
@@ -27,21 +27,10 @@ class Withdrawal extends Model
     public function getStatusLabelAttribute(): string
     {
         return match($this->status) {
-            'pending'   => '⏳ Menunggu Proses',
-            'processed' => '✅ Berhasil Dicairkan',
-            'rejected'  => '❌ Ditolak',
+            'processed' => 'Berhasil Dicairkan',  
             default     => $this->status,
         };
     }
 }
-    // Estimasi selesai 1 hari dari pengajuan
-    // public function getEstimatedAttribute(): string
-    // {
-    //     //return $this->created_at->addDay()->format('d M Y, H:i');
-    //     return $this->created_at
-    //     ->copy()
-    //     ->addMinutes(1)
-    //     ->format('d M Y, H:i');
-
-    // }
+  
 

@@ -184,13 +184,4 @@ class CampaignController extends Controller
         return redirect()->route('fundraiser.dashboard')
             ->with('success', 'Campaign diperbarui dan dikirim ulang untuk review.');
     }
-
-    public function destroy(Campaign $campaign)
-    {
-        abort_if($campaign->user_id !== auth()->id(), 403);
-        if ($campaign->image) Storage::disk('public')->delete($campaign->image);
-        $campaign->delete();
-        return redirect()->route('fundraiser.dashboard')
-            ->with('success', 'Campaign berhasil dihapus.');
-    }
 }

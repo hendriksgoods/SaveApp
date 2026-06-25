@@ -8,11 +8,10 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\FundUsageController;
 use App\Http\Controllers\ForumController;
-use App\Http\Controllers\CampaignUpdateController;
+use App\Http\Controllers\JejakKebaikanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\WithdrawalController;
-use App\Http\Controllers\PasswordController;
 
 
 
@@ -39,7 +38,6 @@ Route::post('/logout',[AuthController::class,'logout'])->name('logout')->middlew
     
     Route::get('/verifications',                    [VerificationController::class,'index'])->name('verifications.index');
     Route::post('/verifications/{user}/approve',    [VerificationController::class,'approve'])->name('verifications.approve');
-    Route::post('/verifications/{user}/approve',   [VerificationController::class,'approve'])->name('verifications.approve');
     
     Route::post('/verifications/{user}/reject',    [VerificationController::class,'reject'])->name('verifications.reject');
     Route::post('/verifications/{user}/revoke',    [VerificationController::class,'revoke'])->name('verifications.revoke');
@@ -59,8 +57,6 @@ Route::post('/logout',[AuthController::class,'logout'])->name('logout')->middlew
     // Verifikasi penggalang
     Route::get('/verification/request',  [VerificationController::class,'request'])->name('verification.request');
     Route::post('/verification/submit',  [VerificationController::class,'submit'])->name('verification.submit');
-
-    Route::put('/profile',  [ProfileController::class,'update'])->name('profile.update');
 
     // Penggalang dashboard
     Route::get('/dashboard',[HomeController::class,'dashboard'])->name('fundraiser.dashboard');
@@ -97,8 +93,8 @@ Route::post('/logout',[AuthController::class,'logout'])->name('logout')->middlew
     Route::delete('/campaigns/{campaign:slug}/forum/{comment}/reply-delete', [ForumController::class,'destroyReply'])->name('forum.destroyReply');
     
     // Jejak Kebaikan
-    Route::post('/campaigns/{campaign:slug}/updates',             [CampaignUpdateController::class,'store'])->name('updates.store');
-    Route::delete('/campaigns/{campaign:slug}/updates/{update}',  [CampaignUpdateController::class,'destroy'])->name('updates.destroy');
+    Route::post('/campaigns/{campaign:slug}/updates',             [JejakKebaikanController::class,'store'])->name('updates.store');
+    Route::delete('/campaigns/{campaign:slug}/updates/{update}',  [JejakKebaikanController::class,'destroy'])->name('updates.destroy');
 
     //Penarikan Dana
     Route::get('/campaigns/{campaign:slug}/withdrawals',  [WithdrawalController::class,'index'])->name('withdrawals.index');

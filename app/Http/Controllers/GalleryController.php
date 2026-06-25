@@ -28,7 +28,6 @@ class GalleryController extends Controller
             CampaignGallery::create([
                 'campaign_id' => $campaign->id,
                 'image_path'  => $path,
-                'caption'     => null,
             ]);
         }
 
